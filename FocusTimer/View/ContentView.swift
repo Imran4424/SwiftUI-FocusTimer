@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var focusModel: FocusModel
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        NavigationStack {
+            Home()
+                .environmentObject(focusModel)
         }
-        .padding()
     }
 }
 

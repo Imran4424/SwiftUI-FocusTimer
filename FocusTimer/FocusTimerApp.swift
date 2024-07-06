@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct FocusTimerApp: App {
+    // MARK: - Since, we are doing background fetching. Initializing here
+    @StateObject var focusModel: FocusModel = .init()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(focusModel)
+                .preferredColorScheme(.dark)
         }
     }
 }
