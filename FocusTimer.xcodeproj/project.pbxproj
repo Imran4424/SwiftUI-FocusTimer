@@ -7,22 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D5AEC862C398FC200ABC9F9 /* StopWatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5AEC852C398FC200ABC9F9 /* StopWatchView.swift */; };
+		1D5AEC882C398FD600ABC9F9 /* StopWatchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D5AEC872C398FD600ABC9F9 /* StopWatchModel.swift */; };
 		1D9164512C391B830009D86A /* FocusTimerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9164502C391B830009D86A /* FocusTimerApp.swift */; };
 		1D9164532C391B830009D86A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9164522C391B830009D86A /* ContentView.swift */; };
 		1D9164552C391B850009D86A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9164542C391B850009D86A /* Assets.xcassets */; };
 		1D9164582C391B850009D86A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1D9164572C391B850009D86A /* Preview Assets.xcassets */; };
 		1D9164612C3940E90009D86A /* FocusModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9164602C3940E90009D86A /* FocusModel.swift */; };
-		1D9164632C3944C90009D86A /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9164622C3944C90009D86A /* Home.swift */; };
+		1D9164632C3944C90009D86A /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9164622C3944C90009D86A /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D5AEC852C398FC200ABC9F9 /* StopWatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchView.swift; sourceTree = "<group>"; };
+		1D5AEC872C398FD600ABC9F9 /* StopWatchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopWatchModel.swift; sourceTree = "<group>"; };
 		1D91644D2C391B830009D86A /* FocusTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FocusTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1D9164502C391B830009D86A /* FocusTimerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusTimerApp.swift; sourceTree = "<group>"; };
 		1D9164522C391B830009D86A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1D9164542C391B850009D86A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1D9164572C391B850009D86A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1D9164602C3940E90009D86A /* FocusModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusModel.swift; sourceTree = "<group>"; };
-		1D9164622C3944C90009D86A /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		1D9164622C3944C90009D86A /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +80,8 @@
 			isa = PBXGroup;
 			children = (
 				1D9164522C391B830009D86A /* ContentView.swift */,
-				1D9164622C3944C90009D86A /* Home.swift */,
+				1D9164622C3944C90009D86A /* HomeView.swift */,
+				1D5AEC852C398FC200ABC9F9 /* StopWatchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -85,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				1D9164602C3940E90009D86A /* FocusModel.swift */,
+				1D5AEC872C398FD600ABC9F9 /* StopWatchModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -161,8 +167,10 @@
 			files = (
 				1D9164532C391B830009D86A /* ContentView.swift in Sources */,
 				1D9164512C391B830009D86A /* FocusTimerApp.swift in Sources */,
-				1D9164632C3944C90009D86A /* Home.swift in Sources */,
+				1D5AEC862C398FC200ABC9F9 /* StopWatchView.swift in Sources */,
+				1D9164632C3944C90009D86A /* HomeView.swift in Sources */,
 				1D9164612C3940E90009D86A /* FocusModel.swift in Sources */,
+				1D5AEC882C398FD600ABC9F9 /* StopWatchModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

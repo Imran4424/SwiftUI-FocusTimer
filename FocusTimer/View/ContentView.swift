@@ -12,8 +12,26 @@ struct ContentView: View {
     
     var body: some View {
         NavigationStack {
-            Home()
-                .environmentObject(focusModel)
+            TabView {
+                HomeView()
+                    .environmentObject(focusModel)
+                    .tabItem {
+                        Image(systemName: "clock.badge.fill")
+                        Text("Timer")
+                    }
+                
+                Text("Stopwatch")
+                    .tabItem {
+                        Image(systemName: "stopwatch.fill")
+                        Text("Stop watch")
+                    }
+                
+                Text("Profile")
+                    .tabItem {
+                        Image(systemName: "person.fill")
+                        Text("Profile")
+                    }
+            }
         }
     }
 }

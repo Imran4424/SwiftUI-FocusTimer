@@ -1,5 +1,5 @@
 //
-//  Home.swift
+//  HomeView.swift
 //  FocusTimer
 //
 //  Created by Shah Md Imran Hossain on 6/7/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Home: View {
+struct HomeView: View {
     @EnvironmentObject private var focusModel: FocusModel
     
     var body: some View {
@@ -238,7 +238,7 @@ struct Home: View {
 }
 
 #Preview {
-    Home()
+    HomeView()
         .environmentObject(FocusModel())
         .preferredColorScheme(.dark)
 }
