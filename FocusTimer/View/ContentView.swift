@@ -9,18 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var focusModel: FocusModel
+    @EnvironmentObject var stopWatchModel: StopWatchModel
     
     var body: some View {
         NavigationStack {
             TabView {
                 HomeView()
-                    .environmentObject(focusModel)
+                // environment object can be pushed once from app file
+                // and used everywhere
+                // no need to push again to child views
+//                    .environmentObject(focusModel)
                     .tabItem {
                         Image(systemName: "clock.badge.fill")
                         Text("Timer")
                     }
                 
-                Text("Stopwatch")
+                StopWatchView()
+                // environment object can be pushed once from app file
+                // and used everywhere
+                // no need to push again to child views
+//                    .environmentObject(stopWatchModel)
                     .tabItem {
                         Image(systemName: "stopwatch.fill")
                         Text("Stop watch")
@@ -39,4 +47,5 @@ struct ContentView: View {
 #Preview {
     ContentView()
         .environmentObject(FocusModel())
+        .environmentObject(StopWatchModel())
 }

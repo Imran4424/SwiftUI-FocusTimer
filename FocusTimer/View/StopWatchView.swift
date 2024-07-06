@@ -8,11 +8,32 @@
 import SwiftUI
 
 struct StopWatchView: View {
+    @EnvironmentObject var stopWatchModel: StopWatchModel
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Stopwatch")
+                .font(.title2.bold())
+                .foregroundStyle(Color.white)
+            
+            GeometryReader { proxy in
+                VStack(spacing: 15) {
+                    // MARK: - Timer Ring
+                    
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            }
+        }
+        .padding()
+        .background {
+            Color("BG")
+                .ignoresSafeArea()
+        }
     }
 }
 
 #Preview {
     StopWatchView()
+        .environmentObject(StopWatchModel())
+        .preferredColorScheme(.dark)
 }

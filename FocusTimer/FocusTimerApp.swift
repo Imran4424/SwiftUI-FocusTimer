@@ -11,6 +11,7 @@ import SwiftUI
 struct FocusTimerApp: App {
     // MARK: - Since, we are doing background fetching. Initializing here
     @StateObject var focusModel: FocusModel = .init()
+    @StateObject var stopwatchModel: StopWatchModel = .init()
     
     // MARK: - Scene phase
     @Environment(\.scenePhase) var phase
@@ -22,6 +23,7 @@ struct FocusTimerApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(focusModel)
+                .environmentObject(stopwatchModel)
                 .preferredColorScheme(.dark)
         }
         .onChange(of: phase) { oldValue, newValue in
