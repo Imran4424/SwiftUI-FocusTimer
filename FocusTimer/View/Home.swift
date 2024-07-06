@@ -74,12 +74,14 @@ struct Home: View {
                     Button {
                         if focusModel.isStarted {
                             focusModel.stopTimer()
+                            // MARK: - cancelling all notifications
+                            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
                         } else {
                             focusModel.addNewTimer = true
                         }
                         
                     } label: {
-                        Image(systemName: focusModel.isStarted ? "pause" : "timer")
+                        Image(systemName: focusModel.isStarted ? "stop.fill" : "timer")
                             .font(.largeTitle.bold())
                             .foregroundStyle(Color.white)
                             .frame(width: 80, height: 80)
@@ -119,6 +121,16 @@ struct Home: View {
         .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
             if focusModel.isStarted {
                 focusModel.updateTimer()
+            }
+        }
+        .alert("Congratulations, You did it hooray 🥳🥳🥳", isPresented: $focusModel.isFinished) {
+            Button("Start New", role: .cancel) {
+                focusModel.stopTimer()
+                focusModel.addNewTimer = true
+            }
+            
+            Button("Close", role: .destructive) {
+                focusModel.stopTimer()
             }
         }
     }

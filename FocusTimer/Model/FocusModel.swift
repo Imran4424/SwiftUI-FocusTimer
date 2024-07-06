@@ -22,6 +22,27 @@ class FocusModel: NSObject, ObservableObject {
     @Published var totalSeconds: Int = 0
     @Published var staticTotalSeconds: Int = 0
     
+    // MARK: - Post Timer Properties
+    @Published var isFinished: Bool = false
+    
+    // Since Its NSObject
+    override init() {
+        super.init()
+        self.authorizeNotification()
+    }
+    
+    // MARK: - Requesting Notification Access
+    func authorizeNotification() {
+        UNUserNotificationCenter.current().requestAuthorization(options: [.sound, .alert, .badge]) { _, error in
+            if error != nil {
+                print(error!.localizedDescription)
+            }
+            
+            // MARK: - to show in app notification
+            UNUserNotificationCenter.current().delegate = self
+        }
+    }
+    
     // MARK: - Starting timer
     func startTimer() {
         withAnimation(.easeIn(duration: 0.25)) {
@@ -35,11 +56,22 @@ class FocusModel: NSObject, ObservableObject {
         staticTotalSeconds = totalSeconds
         
         addNewTimer = false
+        addNotification()
     }
     
     // MARK: - stoping timer
     func stopTimer() {
+        withAnimation {
+            isStarted = false
+            hours = 0
+            minutes = 0
+            seconds = 0
+            progress = 1
+        }
         
+        totalSeconds = 0
+        staticTotalSeconds = 0
+        timerStringValue = "00:00"
     }
     
     // MARK: - updating timer
@@ -58,6 +90,25 @@ class FocusModel: NSObject, ObservableObject {
         if hours == 0 && minutes == 0 && seconds == 0 {
             isStarted = false
             print("Finished")
+            isFinished = true
         }
     }
+    
+    func addNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Focus Timer"
+        content.subtitle = "Congratulations, You did it hooray 🥳🥳🥳"
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: UNTimeIntervalNotificationTrigger(timeInterval: TimeInterval(staticTotalSeconds), repeats: false))
+        
+        UNUserNotificationCenter.current().add(request)
+    }
+}
+
+extension FocusModel: UNUserNotificationCenterDelegate { 
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.sound, .banner])
+    }
+    
 }
