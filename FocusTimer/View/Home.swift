@@ -18,7 +18,7 @@ struct Home: View {
             
             GeometryReader { proxy in
                 VStack(spacing: 15) {
-                    // MARK: - Timer
+                    // MARK: - Timer Ring
                     ZStack {
                         Circle()
                             .fill(.white.opacity(0.03))
@@ -62,7 +62,7 @@ struct Home: View {
                         
                         Text(focusModel.timerStringValue)
                             .font(.system(size: 45, weight: .light))
-                            .rotationEffect(.init(degrees: -90))
+                            .rotationEffect(.init(degrees: 90))
                             .animation(.none, value: focusModel.progress)
                     }
                     .padding(60)
@@ -73,7 +73,7 @@ struct Home: View {
                     
                     Button {
                         if focusModel.isStarted {
-                            
+                            focusModel.stopTimer()
                         } else {
                             focusModel.addNewTimer = true
                         }
@@ -115,6 +115,11 @@ struct Home: View {
                     .offset(y: focusModel.addNewTimer ? 0 : 400)
             }
             .animation(.easeInOut, value: focusModel.addNewTimer)
+        }
+        .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
+            if focusModel.isStarted {
+                focusModel.updateTimer()
+            }
         }
     }
     
@@ -179,7 +184,7 @@ struct Home: View {
             .padding(.top, 20)
             
             Button {
-                
+                focusModel.startTimer()
             } label: {
                 Text("Save")
                     .font(.title3)
