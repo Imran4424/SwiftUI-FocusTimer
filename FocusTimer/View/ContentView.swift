@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var focusModel: FocusModel
-    @EnvironmentObject var stopWatchModel: StopWatchModel
+    // MARK: - since we are not using enviroment variables
+//    @EnvironmentObject var focusModel: FocusModel
+//    @EnvironmentObject var stopWatchModel: StopWatchModel
     
     var body: some View {
         NavigationStack {
