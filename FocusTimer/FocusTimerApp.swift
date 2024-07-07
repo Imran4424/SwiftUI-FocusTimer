@@ -36,6 +36,10 @@ struct FocusTimerApp: App {
                     // MARK: - finding the difference
                     let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
                     
+                    if stopwatchModel.isRunning {
+                        stopwatchModel.totalSeconds += Int(currentTimeStampDiff)
+                    }
+                    
                     if focusModel.totalSeconds - Int(currentTimeStampDiff) <= 0 {
                         focusModel.isStarted = false
                         focusModel.totalSeconds = 0
