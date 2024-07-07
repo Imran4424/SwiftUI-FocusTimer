@@ -27,19 +27,19 @@ struct FocusTimerApp: App {
                 .preferredColorScheme(.dark)
         }
         .onChange(of: phase) { oldValue, newValue in
-            if focusModel.isStarted {
-                if newValue == .background {
-                    lastActiveTimeStamp = Date()
+            if newValue == .background {
+                lastActiveTimeStamp = Date()
+            }
+            
+            if newValue == .active {
+                // MARK: - finding the difference
+                let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
+                
+                if stopwatchModel.isRunning {
+                    stopwatchModel.totalSeconds += Int(currentTimeStampDiff)
                 }
                 
-                if newValue == .active {
-                    // MARK: - finding the difference
-                    let currentTimeStampDiff = Date().timeIntervalSince(lastActiveTimeStamp)
-                    
-                    if stopwatchModel.isRunning {
-                        stopwatchModel.totalSeconds += Int(currentTimeStampDiff)
-                    }
-                    
+                if focusModel.isStarted {
                     if focusModel.totalSeconds - Int(currentTimeStampDiff) <= 0 {
                         focusModel.isStarted = false
                         focusModel.totalSeconds = 0

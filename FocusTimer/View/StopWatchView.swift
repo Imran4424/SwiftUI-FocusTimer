@@ -78,7 +78,7 @@ struct StopWatchView: View {
                                 .shadow(color: Color("mPurple"), radius: 8, x: 0, y: 0)
                         }
                     }
-                    .padding(.horizontal)
+                    .padding()
                 }
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
             }
