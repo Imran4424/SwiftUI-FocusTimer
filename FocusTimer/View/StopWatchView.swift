@@ -45,7 +45,7 @@ struct StopWatchView: View {
                     
                     HStack {
                         Button {
-                            
+                            stopWatchModel.stopTimer()
                         } label: {
                             Image(systemName: "clock.arrow.circlepath")
                                 .font(.largeTitle.bold())
@@ -61,9 +61,13 @@ struct StopWatchView: View {
                         Spacer()
 
                         Button {
-                            
+                            if stopWatchModel.isRunning {
+                                stopWatchModel.isRunning = false
+                            } else {
+                                stopWatchModel.isRunning = true
+                            }
                         } label: {
-                            Image(systemName: stopWatchModel.isStarted ?  "pause" : "play")
+                            Image(systemName: stopWatchModel.isRunning ?  "pause" : "play")
                                 .font(.largeTitle.bold())
                                 .foregroundStyle(Color.white)
                                 .frame(width: 80, height: 80)
@@ -83,6 +87,11 @@ struct StopWatchView: View {
         .background {
             Color("BG")
                 .ignoresSafeArea()
+        }
+        .onReceive(Timer.publish(every: 1, on: .main, in: .common).autoconnect()) { _ in
+            if stopWatchModel.isRunning {
+                stopWatchModel.updateTimer()
+            }
         }
     }
 }
